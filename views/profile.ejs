@@ -1,0 +1,11 @@
+<div class="container col-md p-2 mt-5">
+  <div class="container p-2 mt-1">
+    <h1><%- name %></h1>
+  </div>
+  <% if(articles.length > 0) {%> <% articles.forEach(function(article){ %> <%-
+  include ('./partials/tile',{title:article.title, description:
+  article.description, articleId: article._id, date: article.date}); -%> <% });
+  %> <% } else {%>
+  <div class="text-center text-secondary"><h2>No articles</h2></div>
+  <%}%>
+</div>

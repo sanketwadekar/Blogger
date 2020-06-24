@@ -1,0 +1,46 @@
+<div class="container shadow p-3 mt-5">
+  <div class="row">
+    <div class="col-sm-4 text-center p-3">
+      <img
+        src="/images/user-icon.png"
+        class="img-fluid rounded-circle"
+        alt="user"
+        width="100"
+      />
+    </div>
+    <div class="col-sm-8 p-3">
+      <div>
+        <h1><%- user.name %></h1>
+      </div>
+      <a href="/new-article" class="text-primary"><h5>New article</h5></a>
+      <a href="/users/logout" class="text-primary"><h5>Logout</h5></a>
+    </div>
+  </div>
+</div>
+<div class="container shadow-sm p-5 mt-5">
+  <h2>My Articles</h2>
+  <% if(articles.length > 0) {%> <%
+  articles.forEach(function(article){%>
+  <div class="card">
+    <div class="card-head p-3">
+      <a class="card-link text-dark" href="view/article/<%= article._id %>"
+        ><h4 class="card-title"><%= article.title %></h4></a
+      >
+    </div>
+    <div class="card-body pt-1">
+      <form action="/article/delete/<%= article._id %>" method="GET">
+        <button class="btn btn-outline-danger btn-sm float-right mx-1">
+          Delete
+        </button>
+      </form>
+      <form action="/article/edit/<%= article._id %>" method="GET">
+        <button class="btn btn-outline-success btn-sm float-right mx-1">
+          Edit
+        </button>
+      </form>
+    </div>
+  </div>
+  <%});%> <% } else {%>
+    <div class="text-center text-secondary"><h2>No articles</h2></div>
+    <%}%>
+</div>

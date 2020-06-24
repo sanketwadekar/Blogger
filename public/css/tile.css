@@ -1,0 +1,9 @@
+.tile {
+  border-radius: 0;
+}
+
+.tile:hover {
+  padding: 1em;
+  transition: 0.5s;
+  background-color: rgba(218, 218, 218, 0.432);
+}

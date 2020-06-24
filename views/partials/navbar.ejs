@@ -1,0 +1,23 @@
+<div class="overlay" id="navbar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <ul class="overlay-list">
+    <li><a class="overlay-link" href="/">Home</a></li>
+    <% if(loggedIn){%>
+    <li><a class="overlay-link" href="/dashboard">Dashboard</a></li>
+    <li><a class="overlay-link" href="/new-article">New Article</a></li>
+    <li><a class="overlay-link" href="/users/logout">Logout</a></li>
+    <%}else{%>
+    <li><a class="overlay-link" href="/users/login">Login</a></li>
+    <li><a class="overlay-link" href="/users/register">Signup</a></li>
+    <%}%>
+  </ul>
+  <div class="footer" style="width: 100%; padding: 0.5em;">
+    <a href="https://github.com/sanketwadekar"
+      ><img src="/images/git.png" alt="github-icon"
+    /></a>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="/" class="app-icon">Blogger</a>
+  <span class="menu-link" onclick="openNav()"><i class="fas fa-bars"></i></span>
+</div>

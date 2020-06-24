@@ -1,0 +1,25 @@
+<div class="container p-2 mt-1">
+  <div class="card border-primary shadow-sm tile">
+    <div class="card-body">
+      <h2 class="card-title"><%= title %></h2>
+      <% if (typeof(authorName) != 'undefined'){ %>
+        <p>
+          <blockquote class="float-right text-primary">
+            Written by <%= authorName%>
+          </blockquote>
+        </p>
+      <%}%>
+      <% if (typeof(date) != 'undefined'){ %>
+        <br />
+        <p>
+        <blockquote class="float-right text-secondary">
+          Uploaded on <%= date.getDate()%>
+          <%=months[date.getMonth()]%>
+          <%=date.getFullYear()%>
+        </blockquote>
+        </p>
+      <%}%>
+      <a href="/view/article/<%= articleId %>" class="stretched-link"></a>
+    </div>
+  </div>
+</div>

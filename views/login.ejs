@@ -1,0 +1,35 @@
+<div class="container-fluid mt-5">
+  <div class="col-md-4 m-auto">
+    <div class="card card-body shadow-sm form-container">
+      <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
+      <%- include ('./partials/messages'); -%>
+      <form action="/users/login" method="POST">
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Password"
+            required
+            minlength="8"
+          />
+        </div>
+        <button type="submit" class="btn btn-outline-dark btn-block">Login</button>
+      </form>
+      <p class="lead mt-4">
+        No Account? <a href="/users/register">Register</a>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div>
+  <form action="/search" method="GET">
+    <div class="input-group col-md-6 mx-auto pt-3">
+      <input
+        type="text"
+        class="form-control"
+        name="query"
+        id="name"
+        placeholder="Search articles"
+      />
+
+      <div class="input-group-btn px-2">
+        <input class="btn btn-dark" type="submit" value="Search" />
+      </div>
+    </div>
+  </form>
+  <div class="content-wrap">
+    <% results.forEach(function(result){%> <%- include
+      ('./partials/tile',{title:result.title, authorName:result.authorName,
+      articleId: result._id, date: result.date}); -%> 
+      <%});%>
+  </div>
+</div>

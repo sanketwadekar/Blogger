@@ -1,0 +1,121 @@
+.overlay {
+  background-color: rgb(255, 255, 255);
+  opacity: 1;
+  height: 100%;
+  width: 0%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  transition: 0.5s;
+}
+
+.overlay-list a {
+  font-size: 30px;
+  text-decoration: none;
+  display: block;
+  color: rgb(0, 0, 0);
+  padding: 0.3em;
+  transition: 0.3s;
+}
+
+.overlay-list a:hover,
+.overlay-list a:focus {
+  color: rgb(207, 0, 0);
+  text-decoration: none;
+  background-color: rgba(245, 245, 245, 0.966);
+  border-left: solid 3px black;
+  font-size: 40px;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 0;
+  font-size: 60px;
+  cursor: pointer;
+  line-height: 1em;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.overlay .closebtn:hover {
+  border: none;
+  background-color: white;
+  color: rgb(207, 0, 0);
+  text-decoration: none;
+  font-size: 70px;
+}
+
+.nav-bar {
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.menu-link {
+  font-size: 2em;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  color: rgb(0, 0, 0);
+}
+
+.menu-link:hover {
+  color: rgb(207, 0, 0);
+  transition: 0.3s;
+}
+
+.app-icon,
+.app-icon:hover {
+  display: inline-block;
+  font-family: Pacifico;
+  font-size: 2em;
+  line-height: 2em;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.overlay .footer {
+  width: 100%;
+  padding: 0.5em;
+  position: fixed;
+  bottom: 0;
+}
+
+.overlay .footer img,
+.overlay .footer a:hover {
+  height: 50px;
+  width: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .overlay .closebtn {
+    top: 10px;
+    right: 20px;
+  }
+  .overlay a {
+    font-size: 1.5em;
+  }
+
+  .overlay .footer {
+    text-align: center;
+  }
+  .overlay .footer img {
+    height: 40px;
+  }
+}

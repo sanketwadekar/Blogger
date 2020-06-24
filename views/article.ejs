@@ -1,0 +1,89 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="m-heading display-4"><%= title %></h1>
+    <p class="text-secondary">Uploaded on <%= date.getDate()%>
+      <%=months[date.getMonth()]%>
+      <%=date.getFullYear()%></p>
+    <hr class="my-2" />
+    <p class="lead"><%= description %></p>
+    <blockquote>
+      Posted by
+      <a href="/view/profile/<%= authorId %>" class=""
+        ><h5 class="d-inline-block"><%= authorName%></h5></a
+      >
+    </blockquote>
+    <hr />
+
+    <form
+      action="/view/article/<%= articleId %>/comment"
+      method="POST"
+      class="col-md-12 mr-auto"
+    >
+      <div class="form-group">
+        <label for="description"><h4>Add comment</h4></label>
+        <textarea
+          class="form-control"
+          rows="3"
+          id="comment"
+          name="comment"
+          placeholder="Enter your comment here.."
+          maxlength="500"
+        ></textarea>
+      </div>
+      <%if(user.name == ''){%>
+      <p>
+        <a href="/users/login" data-toggle="modal" data-target="#modelId"
+          >Login</a
+        >
+        to post comment
+      </p>
+      <%}else{%>
+      <p>Posting publicly as <%= user.name %></p>
+      <div class="form-group form-check">
+        <button type="submit" class="btn btn-dark">Post</button>
+      </div>
+      <%}%>
+    </form>
+
+    <!-- Modal -->
+    <%- include ('./partials/login-modal'); -%>
+  </div>
+  <div class="container">
+    <div class="col-lg">
+      <div class="card">
+        <div class="card-body text-center">
+          <%if(comments.length>0){%>
+          <h4 class="card-title">Latest Comments</h4>
+          <%}else{%>
+          <h4 class="card-title">Be the first one to comment</h4>
+          <%}%>
+        </div>
+        <div class="">
+          <% comments.forEach(function(comment){ %>
+          <div class="d-flex flex-row border mx-1">
+            <div class="px-2 pt-3">
+              <img
+                src="/images/user-icon.png"
+                alt="user"
+                width="50"
+                class="rounded-circle"
+              />
+            </div>
+            <div class="w-100">
+              <h6 class="mt-2"><%=comment.userName%></h6>
+              <span class="m-b-15 d-block"><%=comment.comment%></span>
+              <div class="">
+                <div class="text-muted float-right m-2">
+                  <%= comment.date.getDate()%>
+                  <%=months[comment.date.getMonth()]%>
+                  <%=comment.date.getFullYear()%>
+                </div>
+              </div>
+            </div>
+          </div>
+          <%});%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
