@@ -46,7 +46,8 @@ router.post("/register", (req, res) => {
       password,
       password2,
       loggedIn: false,
-      styles:['form']
+      styles:['form'],
+      libs: ["validate"]
     });
   } else {
     User.findOne({ email: email }).then((user) => {
@@ -59,7 +60,8 @@ router.post("/register", (req, res) => {
           password,
           password2,
           loggedIn: false,
-          styles:['form']
+          styles:['form'],
+          libs: ["validate"]
         });
       } else {
         const newUser = new User({

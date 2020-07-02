@@ -7,7 +7,6 @@ const Article = require("../models/Article");
 mongoose.set("useFindAndModify", false);
 
 router.get("/delete/:articleId", ensureAuthenticated, (req, res) => {
-  console.log("sadsda");
   Article.deleteOne({ _id: req.params.articleId })
     .then((result) => {
       res.redirect("/dashboard");
