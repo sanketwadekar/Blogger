@@ -13,7 +13,7 @@ router.get("/article/:id", (req, res) => {
     .populate("comments")
     .then((article) => {
       if (!article) {
-        return res.status(404).send("<h1>404 fsdfsf Page Not Found</h1>");
+        return res.status(404).send("<h1>404 Page Not Found</h1>");
       }
       var date = new Date(article.date);
       res.render("article", {
@@ -58,7 +58,7 @@ router.get("/profile/:id", (req, res) => {
     .select({ authorId: 0, __v: 0 })
     .then((article) => {
       if (!article.length) {
-        return res.status(404).send("<h1>404 hahah Page Not Found</h1>");
+        return res.status(404).send("<h1>404 Page Not Found</h1>");
       }
       res.render("profile", {
         name: article[0].authorName,
