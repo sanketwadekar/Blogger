@@ -1,5 +1,6 @@
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
+const validator = require('validator');
 
 // Load User model
 const User = require('../models/User');
@@ -11,7 +12,7 @@ module.exports = function(passport) {
       User.findOne({
         email: email
       }).then(user => {
-        if (!user) {
+        if (!user || !validator.isEmail(email)) {
           return done(null, false, { message: 'Incorrect credentials' });
         }
 

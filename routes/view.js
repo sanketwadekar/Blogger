@@ -5,7 +5,8 @@ const {months} = require('../utils/months');
 const Article = require("../models/Article");
 const Comment = require("../models/Comment");
 
-router.get("/article/:id", (req, res) => {
+router.get("/article/:id", (req, res, next) => {
+  try{
   if (!mongoose.isValidObjectId(req.params.id)) {
     return res.send("<h1>404 Page Not Found</h1>");
   }
@@ -30,27 +31,31 @@ router.get("/article/:id", (req, res) => {
         styles:['form']
       });
     });
+  }catch(err){
+    next(err);
+  }
 });
 
-router.post("/article/:id/comment", async (req, res) => {
-  newComment = new Comment({
+router.post("/article/:id/comment", async (req, res, next) => {
+  try {
+  const newComment = new Comment({
     comment: req.body.comment,
     userId: req.user.id,
     userName: req.user.name,
   });
-  try {
     const savedComment = await newComment.save();
     const blogPost = await Article.findOne({ _id: req.params.id });
     blogPost.comments.push(mongoose.Types.ObjectId(savedComment._id));
     await blogPost.save();
+    res.redirect(`/view/article/${req.params.id}`);
+    return;
   } catch (err) {
-    console.log(err);
+    next(err);
   }
-  res.redirect(`/view/article/${req.params.id}`);
-  return;
 });
 
-router.get("/profile/:id", (req, res) => {
+router.get("/profile/:id", (req, res, next) => {
+  try{
   if (!mongoose.isValidObjectId(req.params.id)) {
     return res.send("<h1>404 Page Not Found</h1>");
   }
@@ -67,6 +72,9 @@ router.get("/profile/:id", (req, res) => {
         months
       });
     });
+  }catch(err){
+    next(err);
+  }
 });
 
 module.exports = router;

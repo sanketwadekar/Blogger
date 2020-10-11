@@ -10,8 +10,6 @@ const submitMsg = document.getElementById("submit-msg");
 const submit = document.getElementById("submit");
 const form = document.getElementsByTagName("form")[0];
 
-var allowed = false;
-
 function validateEmail(email) {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
     return true;
@@ -51,15 +49,12 @@ password2.addEventListener("input", function () {
     if (!verifyPassword(password.value, password2.value, 8)) {
       password2Msg.style.color = "red";
       password2Msg.innerHTML = "Passwords do not match";
-      allowed = false;
     } else {
       password2Msg.style.color = "green";
       password2Msg.innerHTML = "Password verified";
-      allowed = true;
     }
   } else {
     password2Msg.innerHTML = "";
-    allowed = false;
   }
 });
 
@@ -67,15 +62,11 @@ password.addEventListener("focusout", function () {
   if (!validatePassword(password.value, 8)) {
     passwordMsg.style.color = "red";
     passwordMsg.innerHTML = "Password should be 8 characters long";
-    allowed = false;
-  } else {
-    allowed = true;
   }
 });
 
 password.addEventListener("input", function () {
   if (password.value.length > 7) {
-    allowed = true;
     passwordMsg.style.color = "black";
     if (password.value.length < 10) {
       passwordMsg.innerHTML =
@@ -87,18 +78,14 @@ password.addEventListener("input", function () {
       passwordMsg.innerHTML =
         'Password strength: <span style="color:green">Good</span>';
     }
-  } else {
-    allowed = false;
   }
 });
 
 email.addEventListener("focusout", function () {
   if (validateEmail(email.value)) {
     emailMsg.innerHTML = "";
-    allowed = true;
   } else {
     emailMsg.innerHTML = "Invalid Email Id";
-    allowed = false;
   }
 });
 
@@ -106,9 +93,7 @@ name.addEventListener("focusout", function () {
   name.value = name.value.trim();
   if (!validateName(name.value)) {
     nameMsg.innerHTML = "Name field cannot be empty";
-    allowed = false;
   } else {
-    allowed = true;
     nameMsg.innerHTML = "";
   }
 });
